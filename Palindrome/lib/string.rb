@@ -1,7 +1,7 @@
 class String
 
   def palindrome?
-    eql?(reverse)
+    downcase.eql?(downcase.reverse)
   end
 
 end
