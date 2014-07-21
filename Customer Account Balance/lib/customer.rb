@@ -1,28 +1,39 @@
 class Customer
   
-  @@class_instance_no = 0
-
-  attr_reader :balance, :acc_no
+  @@account_number = 25111236
+  attr_reader :balance, :accout_no
   attr_accessor :name
 
   def initialize(name)
     @name = name
     @balance = 1000
-    @acc_no = (@@class_instance_no += 1)
+    @account_no = (@@account_number += 1)
   end
 
   def deposit(amount)
-    @balance += amount
+    if amount <= 0 
+      wrong_input_message
+    else 
+      @balance += amount
+    end
   end
 
   def withdraw(amount)
-    if @balance >= amount
+    if amount <= 0
+      wrong_input_message
+    elsif @balance <= amount
+      puts "Insufficient Balance in #{ @name }'s account"
+    else
       @balance -= amount
     end
   end
 
   def to_s
-    "Name: #{@name} Account no: #{@acc_no} Balance: #{@balance}"
+    "Name: #{ @name } Account no: #{ @account_no } Balance: #{ @balance }"
+  end
+
+  def wrong_input_message
+    puts "----error----Please enter a positive amount for #{ @name }'s transaction"
   end
 
 end
