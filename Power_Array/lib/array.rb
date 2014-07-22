@@ -1,7 +1,7 @@
 class Array
 
-  def power(to_the_power)
-    map { |array_item| array_item**to_the_power }
+  def power(exponent)
+    map { |array_item| array_item ** exponent }
   end
 
 end
