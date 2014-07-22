@@ -1,3 +1,3 @@
 require_relative '../lib/fixnum'
 
-Fixnum.fibonaccing_upto { |nexn| print " #{nexn}" }
+Fixnum.fibonacci_upto { |nexn| print " #{nexn}" }
