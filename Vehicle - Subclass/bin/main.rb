@@ -1,4 +1,4 @@
-require_relative '../lib/vehicle'
+require_relative '../lib/bike'
 
 pulsar = Bike.new("pulsar 150", 50000, "jerry")
 
