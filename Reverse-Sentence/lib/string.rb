@@ -1,7 +1,7 @@
 class String
 
-  def reverse_sentence
-    split(' ').reverse.join(' ')
+  def reverse_order_of_words
+    split.reverse.join(' ')
   end
 
 end
