@@ -1,7 +1,7 @@
 class Vehicle
-  
+
   attr_accessor :price
-  
+
   def initialize(name, price)
     @name = name
     @price = price
@@ -10,5 +10,5 @@ class Vehicle
   def to_s
     "Name: #{ @name }\nPrice: #{ @price }" 
   end
-    
+  
 end

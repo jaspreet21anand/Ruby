@@ -1,6 +1,6 @@
 class Fixnum
 
-  def self.fibonacci_upto
+  def self.fibonacci_upto_1000
     num, next_num = 1, 1
     
     while num  < 1000
