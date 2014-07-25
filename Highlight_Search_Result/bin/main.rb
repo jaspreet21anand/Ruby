@@ -4,5 +4,5 @@ print 'Enter the string: '
 string = gets.chomp
 print 'Enter the word to be highlighted: '
 word = gets.chomp
-puts string.highlight_(word)
+puts string.search_and_highlight(word)
 
