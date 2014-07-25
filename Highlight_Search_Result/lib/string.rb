@@ -1,8 +1,8 @@
 class String
 
-  def highlight_regex_in_string(regex)
+  def highlight_(word)
     count = 0
-    string = gsub(/#{ Regexp.quote(regex) }/i) do |match|
+    string = gsub(/#{ Regexp.quote(word) }/i) do |match|
       count += 1
       match = "(#{ match })"
     end
@@ -10,3 +10,4 @@ class String
   end
 
 end
+
