@@ -7,7 +7,7 @@ class Time
     ss = time_array[2].to_i
 
     if hh < 24 && mm < 60 && ss < 60
-      return Time.new(2000, 5, 5, hh, mm, ss, "+00:00")
+      return Time.new(1970, 1, 1, hh, mm, ss, "+00:00")
     else
       puts 'Invalid time'
       return nil
@@ -17,7 +17,7 @@ class Time
 
   def sum_time(time)
     summed_time = time + hour * 3600 + min * 60 + sec
-    "#{ '1 day' if summed_time.day != time.day } #{ summed_time.hour }:#{ summed_time.min }:#{ summed_time.sec }"
+    "#{ summed_time.day - day if summed_time.day != time.day } #{ summed_time.hour }:#{ summed_time.min }:#{ summed_time.sec }"
   end
 
 end
