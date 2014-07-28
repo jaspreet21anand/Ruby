@@ -1,8 +1,16 @@
 require_relative '../lib/time'
+require 'time'
 
 print 'Enter time1: '
-time1 = Time.validate_time(gets)
-print 'Enter time2: '
-time2 = Time.validate_time(gets)
+while !Time.validate?(time = gets.chomp)
+  print "Invalid time! Please enter a valid time: "
+end
+time1 = Time.parse(time)
 
-puts time1.sum_time(time2)
+print 'Enter time2: '
+while !Time.validate?(time = gets.chomp)
+  print "Invalid time! Please enter a valid time: "
+end
+time2 = Time.parse(time)
+
+puts time1.sum(time2)
