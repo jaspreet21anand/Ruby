@@ -8,7 +8,7 @@ class Vehicle
   end
 
   def to_s
-    "Name: #{ @name }\nPrice: #{ @price }" 
+    "Name: #{ @name }\nPrice: #{ @price }"
   end
-  
+
 end
