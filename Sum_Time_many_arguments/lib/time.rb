@@ -1,26 +1,20 @@
 class Time
 
-  def self.validate_time(time_string)
-    time_array = time_string.sub(/(?<time>\d{1,2}\s*:\s*\d{1,2}\s*.\s*\d{0,2})/, '\k<time>').split(':')
-    hh = time_array[0].to_i
-    mm = time_array[1].to_i
-    ss = time_array[2].to_i
-
-    if hh < 24 && mm < 60 && ss < 60
-      return Time.new(1970, 1, 1, hh, mm, ss, "+00:00")
-    else
-      puts 'Invalid time'
-      return nil
-    end
-
+  REGEX = /^(([0-1]\d)|(2[0-3])|\d):(([0-5]\d)|\d):(([0-5]\d)|\d)\z/
+  def self.validate?(time_string)
+    !!(time_string =~ REGEX)
   end
 
-  def sum_time(*time)
-    summed_time = self
-    summed_time = time.inject(summed_time) do |summed_time, time|
-      summed_time += time.to_sec
+  def sum(*time)
+    summed_sec = self.to_sec
+    summed_sec = time.inject(summed_sec) do |summed_sec, time|
+      summed_sec += time.to_sec
       end
-    "#{ summed_time.day - day if summed_time.day != day } #{ summed_time.hour }:#{ summed_time.min }:#{ summed_time.sec }"
+    summed_day = summed_sec / (3600 * 24)
+    summed_hour = (summed_sec % (3600 * 24)) / 3600
+    summed_min = ((summed_sec % (3600 * 24)) % 3600) / 60
+    summed_sec = ((summed_sec % (3600 * 24)) / 3600) % 60
+    "#{ "#{ summed_day } day" if summed_day != 0 } #{ summed_hour }:#{ summed_min }:#{ summed_sec }"
   end
 
   protected
