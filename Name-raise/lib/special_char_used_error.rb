@@ -1,0 +1,2 @@
+class SpecialCharUsedError < StandardError
+end

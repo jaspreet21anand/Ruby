@@ -1,0 +1,2 @@
+class FirstCharNotCapitalError < StandardError
+end

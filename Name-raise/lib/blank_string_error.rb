@@ -1,0 +1,1 @@
+BlankStringError = Class.new(StandardError)
