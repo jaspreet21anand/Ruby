@@ -1,3 +1,3 @@
-require_relative '../lib/fixnum'
+require_relative '../lib/series'
 
-Fixnum.fibonacci_upto_1000 { |next_num| print " #{ next_num }" }
+Series.fibonacci_series(1000) { |next_num| print "#{ next_num } " }
