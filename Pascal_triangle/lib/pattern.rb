@@ -1,16 +1,17 @@
 class Pattern
 
   def self.generate_pascal(up_limit)
-    pascal_hash = { 0 => [1] }
-    for i in 0..up_limit
-      yield pascal_hash[i]
-      pascal_hash[i + 1] = generate_next_line(pascal_hash[i])
+    pascal_array = [[1]]
+    (0..up_limit).each do |i|
+      yield pascal_array[i]
+      pascal_array[i + 1] = generate_next_line(pascal_array[i])
     end
   end
 
   def self.generate_next_line(previous_line)
-    i = 0
-    previous_line.inject([1]) { |ret, value| ret << value + previous_line[i += 1].to_i }
+    previous_line.each_with_index.inject([1]) do |ret, (value, index)|
+    ret << value + previous_line[index += 1].to_i
+    end
   end
   private_class_method :generate_next_line
 
