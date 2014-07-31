@@ -1,7 +1,7 @@
 require_relative '../lib/name.rb'
 
 begin
-  full_name = Name.new('+Jaspreet', 'Singh')
+  full_name = Name.new('Jaspreet', 'singh')
 rescue FirstCharNotCapitalError => error
   puts error.message
 rescue BlankStringError => error

@@ -4,25 +4,23 @@ require_relative 'first_char_not_capital_error'
 class Name
 
   BLANK_STRING = /\S+/
-  CHECK_SPECIAL_CHARACTER = /^(([^\s].*\W.*)|([^\s\w].*))/
   UPPER_CASE_FORMAT = /^[A-Z][A-Za-z].*$/
   attr_reader :first_name, :last_name
 
   def initialize(first_name, last_name)
-    Name.valid?(first_name)
-    Name.valid?(last_name)
+    valid?(first_name, 'First Name')
+    valid?(last_name, 'Last Name')
 
     @first_name = first_name
     @last_name = last_name
   end
 
-  def self.valid?(string)
-    if string !~ BLANK_STRING || string.nil?
-      raise BlankStringError, 'ERROR: Field left blank'
-
-    elsif string !~ UPPER_CASE_FORMAT
-      raise FirstCharNotCapitalError, "ERROR: In #{ string }, first character should be Capital Alphabet"
+  def valid?(string, field_name)
+    if string !~ BLANK_STRING
+      raise BlankStringError, "ERROR: #{ field_name } Field left blank"
+    elsif field_name != 'Last Name' && string !~ UPPER_CASE_FORMAT
+      raise FirstCharNotCapitalError, "ERROR: In #{ field_name }, first character must be Capital"
     end
   end
-
+  private :valid?
 end

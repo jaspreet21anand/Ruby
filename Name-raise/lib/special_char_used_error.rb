@@ -1,2 +1,0 @@
-class SpecialCharUsedError < StandardError
-end
