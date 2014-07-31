@@ -10,7 +10,7 @@ class Pattern
 
   def self.generate_next_line(previous_line)
     previous_line.each_with_index.inject([1]) do |ret, (value, index)|
-    ret << value + previous_line[index += 1].to_i
+      ret << value + previous_line[index += 1].to_i
     end
   end
   private_class_method :generate_next_line
