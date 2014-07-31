@@ -1,8 +1,8 @@
 require_relative '../lib/interest'
 
 a = Interest.new do |variable|
-print "Enter value for #{ variable }: "
-gets
+  print "Enter value for #{ variable }: "
+  gets
 end
 
 difference, ci, si = a.difference_in_CI_and_SI
