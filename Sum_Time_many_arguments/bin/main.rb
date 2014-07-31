@@ -26,5 +26,5 @@ end
 time4 = Time.parse(time)
 
 puts time1.sum(time4, time3, time2)
-puts time1.sum
+puts time1.sum(time2)
 puts time1.sum(time3, time2)
