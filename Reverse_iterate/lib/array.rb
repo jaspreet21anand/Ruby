@@ -6,7 +6,7 @@ class Array
       reverse_array[i-1] = self[-i]
       yield (self[-i]) if block_given?
     end
-    reverse_array.to_enum
+    self
   end
 
 end
