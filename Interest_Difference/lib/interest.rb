@@ -5,7 +5,7 @@ class Interest
 
   def initialize
     temp_var = yield
-    raise "Expected two arguments in array { [<principle> <time>] }" if temp_var.length != 2
+    raise "Expected two arguments separated by coma { <principle>, <time> }" if temp_var.length != 2
     @principle, @time = temp_var
   end
 
