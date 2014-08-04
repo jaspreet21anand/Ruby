@@ -1,14 +1,24 @@
 class Interest
+  RATE = 0.10
 
-  def initialize &printmessage
-    @principle = printmessage.call('principle').to_f
-    @rate = printmessage.call('rate').to_f
+  attr_accessor :principle, :time
+
+  def initialize
+    temp_var = yield
+    raise "Expected two arguments in array { [<principle> <time>] }" if temp_var.length != 2
+    @principle, @time = temp_var
   end
 
-  def difference_in_CI_and_SI
-    si = @principle * @rate/100 * 10
-    ci = @principle * (((1 + @rate/100) ** 10) - 1)
-    return (ci - si), ci, si
+  def calculate_SI
+    principle * RATE * time
+  end
+
+  def calculate_CI
+    principle * (((1 + RATE) ** time) - 1)
+  end
+
+  def calculate_difference_in_CI_SI
+    calculate_CI - calculate_SI
   end
 
 end
