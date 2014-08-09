@@ -1,5 +1,4 @@
 class Product
-  @@objects_created = []
 
   def initialize(name = '', price = 0, sales_tax = false, import_tax = false)
     if block_given?
@@ -13,7 +12,6 @@ class Product
       @sales_tax = sales_tax
       @import_tax = import_tax
     end
-    @@objects_created << self
   end
 
   def sales_tax
@@ -28,15 +26,6 @@ class Product
 
   def total_price
     @price + sales_tax + import_tax
-  end
-
-  def self.grand_total(*other)
-    grand_total = 0
-    if other.empty?
-      @@objects_created.each { |product| grand_total += product.total_price }
-      return grand_total
-    end
-    other.each { |product| grand_total += product.total_price }
   end
 
   def to_s
