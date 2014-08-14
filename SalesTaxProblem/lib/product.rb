@@ -1,18 +1,13 @@
 class Product
 
+  YES_OR_NO = { true => 'y', false => 'n' }
+
   attr_reader :price
-  def initialize(name = '', price = 0, sales_tax_exempted = false, import_tax = false)
-    if block_given?
-      @name = yield('Name of product: ')
-      @import_tax = yield('Is the product imported?(y/n): ').downcase == 'y' ? true : false
-      @sales_tax_exempted = yield('Exexempted from sales tax?(y/n): ').downcase == 'y' ? true : false
-      @price = yield('Price: ').to_i
-    else
-      @name = name
-      @price = price
-      @sales_tax_exempted = sales_tax
-      @import_tax = import_tax
-    end
+  def initialize(name = '', price = 0, sales_tax_exempted = false, imported = false)
+      @name = (block_given? ? yield('Name of product: ') : name)
+      @imported = (block_given? ? Product::YES_OR_NO.key(yield("Is the product imported?#{ Product::YES_OR_NO.values.join('/') }: ")) : imported)
+      @sales_tax_exempted = (block_given? ? Product::YES_OR_NO.key(yield("Exexempted from sales tax?#{ Product::YES_OR_NO.values.join('/') }: ")) : sales_tax_exempted)
+      @price = (block_given? ? (yield('Price: ').to_i) : price)
   end
 
   def sales_tax
@@ -20,7 +15,7 @@ class Product
   end
 
   def import_tax
-    @import_tax ? @price * 0.05 : 0
+    @imported ? @price * 0.05 : 0
   end
 
   def total_price
