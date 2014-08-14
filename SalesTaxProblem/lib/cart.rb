@@ -2,7 +2,7 @@ require_relative '../lib/product'
 
 class Cart
 
-  attr_accessor :owner_name, :item_list
+  attr_accessor :customer_name, :item_list
   def initialize(customer_name)
     @customer_name = customer_name
     @item_list = []
